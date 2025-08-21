@@ -93,7 +93,7 @@ export function LoginForm() {
 
                     <Button
                         type="submit"
-                        className="w-full md:h-[52px] mt-2 md:mt-[16px]"
+                        className="w-full md:h-[52px] mt-2 md:mt-[16px] cursor-pointer"
                     >
                         Login
                     </Button>

@@ -40,7 +40,7 @@ export default function Page() {
             <button
               key={index}
               onClick={() => setCurrentSlide(index)}
-              className={`rounded-full transition-all duration-300 ease-in-out hover:scale-110 ${
+              className={`rounded-full transition-all duration-300 ease-in-out hover:scale-110 cursor-pointer ${
                 index === currentSlide
                   ? "bg-primary w-[14px] h-[14px] shadow-lg"
                   : "bg-[#424346] w-[10px] h-[10px] hover:bg-[#525256]"
