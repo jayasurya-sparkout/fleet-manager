@@ -10,7 +10,7 @@ export default function FleetViewPage() {
         {
             value: "list",
             label: "List",
-            content: <RobotsList layout="list" />,
+            content: <RobotsList layout="list" withLinks />,
             hasIcon: true,
             icon: List,
             tabsComponentClass: "w-full"

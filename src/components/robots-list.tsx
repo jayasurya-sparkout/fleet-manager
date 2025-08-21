@@ -1,13 +1,15 @@
 'use client';
 
 import Image from "next/image";
+import Link from "next/link";
 import { Card, CardHeader, CardTitle, CardDescription } from "./ui/card";
 
 type RobotsListProps = {
   layout?: "list" | "map";
+  withLinks?: boolean;
 };
 
-export function RobotsList({ layout = "list" }: RobotsListProps) {
+export function RobotsList({ layout = "list", withLinks = false }: RobotsListProps) {
   const robots = Array.from({ length: 15 });
 
   return (
@@ -31,10 +33,10 @@ export function RobotsList({ layout = "list" }: RobotsListProps) {
         {robots.map((_, idx) => {
           const imagePath = `/robots/robot${idx + 1}.png`;
 
-          return (
+          const content = (
             <Card
               key={idx}
-              className="border-0 p-4 rounded-lg shadow-md flex flex-row bg-[#191A1E]"
+              className={`border-0 p-4 rounded-lg shadow-md flex flex-row bg-[#191A1E] cursor-pointer ${withLinks ? "cursor-pointer" : "cursor-default"}`}
             >
               <div>
                 <Image
@@ -50,6 +52,22 @@ export function RobotsList({ layout = "list" }: RobotsListProps) {
                 <CardDescription>Sequence ID: 0{idx + 1}</CardDescription>
               </CardHeader>
             </Card>
+          );
+
+          return withLinks ? (
+            <Link href={{
+              pathname: `/fleet-view/${idx + 1}`,
+              query: {
+                name: `Robot ${idx + 1}`,
+                image: imagePath,
+                sequenceId: `0${idx + 1}`
+              }
+            }}
+              key={idx}>
+              {content}
+            </Link>
+          ) : (
+            <div key={idx}>{content}</div>
           );
         })}
       </div>
