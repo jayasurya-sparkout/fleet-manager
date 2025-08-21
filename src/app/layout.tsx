@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
+import { Header } from "@/components/header";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -32,12 +33,23 @@ export default function RootLayout({
           attribute="class"
           defaultTheme="dark"
           enableSystem
-
           disableTransitionOnChange
         >
-          <main className="flex w-full h-full flex-1 flex-col">
+          <div className="flex flex-col h-screen w-full bg-background">
+            <div className="fixed top-0 left-0 right-0 z-50 p-8">
+              <Header
+                logoSrc="/brand/logo.svg"
+                initials="AM"
+                name="Aditya Mittal"
+                role="Admin"
+                headerClass="rounded-2xl shadow-lg border-0 bg-card !py-0"
+              />
+            </div>
+
+            <main className="flex-1 height-full px-8 pt-[150px] pb-6 h-screen max-h-screen overflow-hidden">
               {children}
-          </main>
+            </main>
+          </div>
         </ThemeProvider>
       </body>
     </html>
